@@ -1,7 +1,6 @@
 <?php
 
 namespace Abs\FaqPkg;
-use Abs\Basic\Address;
 use Abs\FaqPkg\Faq;
 use App\Http\Controllers\Controller;
 use Auth;
@@ -13,8 +12,26 @@ use Yajra\Datatables\Datatables;
 
 class FaqController extends Controller {
 
+	private $company_id;
 	public function __construct() {
 		$this->data['theme'] = config('custom.admin_theme');
+		$this->company_id = config('custom.company_id');
+	}
+
+	public function getFaqs(Request $request) {
+		$this->data['faqs'] = Faq::
+			select([
+			'faqs.question',
+			'faqs.answer',
+		])
+			->where('faqs.company_id', $this->company_id)
+			->orderby('faqs.display_order', 'asc')
+			->get()
+		;
+		$this->data['success'] = true;
+
+		return response()->json($this->data);
+
 	}
 
 	public function getFaqList(Request $request) {
@@ -139,9 +156,6 @@ class FaqController extends Controller {
 
 	public function deleteFaq($id) {
 		$delete_status = Faq::withTrashed()->where('id', $id)->forceDelete();
-		if ($delete_status) {
-			$address_delete = Address::where('address_of_id', 24)->where('entity_id', $id)->forceDelete();
-			return response()->json(['success' => true]);
-		}
+		return response()->json(['success' => true]);
 	}
 }
