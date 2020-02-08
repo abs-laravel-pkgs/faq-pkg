@@ -4,7 +4,7 @@ namespace Abs\FaqPkg\Database\Seeds;
 use App\Permission;
 use Illuminate\Database\Seeder;
 
-class FaqPermissionSeeder extends Seeder {
+class FaqPkgPermissionSeeder extends Seeder {
 	/**
 	 * Run the database seeds.
 	 *
