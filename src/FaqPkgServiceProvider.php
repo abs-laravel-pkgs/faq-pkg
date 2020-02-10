@@ -18,7 +18,7 @@ class FaqPkgServiceProvider extends ServiceProvider {
 		$this->publishes([
 			__DIR__ . '/public' => base_path('public'),
 			__DIR__ . '/database/seeds/client' => 'database/seeds',
-			__DIR__ . '/config/config.php' => config_path('testimonial-pkg.php'),
+			__DIR__ . '/config/config.php' => config_path('faq-pkg.php'),
 		]);
 	}
 
