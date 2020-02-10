@@ -1,4 +1,4 @@
-@if(config('custom.PKG_DEV'))
+@if(config('faq-pkg.DEV'))
     <?php $faq_pkg_prefix = '/packages/abs/faq-pkg/src';?>
 @else
     <?php $faq_pkg_prefix = '';?>
