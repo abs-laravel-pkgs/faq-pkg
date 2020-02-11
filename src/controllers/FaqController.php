@@ -106,7 +106,7 @@ class FaqController extends Controller {
 					'min:3',
 					'unique:faqs,question,' . $request->id . ',id,company_id,' . Auth::user()->company_id,
 				],
-				'answer' => 'required|max:255|min:3',
+				'answer' => 'required|min:3',
 			], $error_messages);
 			if ($validator->fails()) {
 				return response()->json(['success' => false, 'errors' => $validator->errors()->all()]);
