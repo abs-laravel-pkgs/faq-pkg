@@ -50,6 +50,7 @@ class FaqController extends Controller {
 			->orderby('faqs.id', 'desc');
 
 		return Datatables::of($faqs)
+			->rawColumn(['actions', 'action', 'question'])
 			->addColumn('question', function ($faq) {
 				$status = $faq->status ? 'green' : 'red';
 				return '<span class="status-indicator ' . $status . '"></span>' . $faq->question;
