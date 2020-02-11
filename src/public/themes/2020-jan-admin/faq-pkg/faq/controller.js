@@ -178,7 +178,6 @@ app.component('faqForm', {
                 'answer': {
                     required: true,
                     minlength: 3,
-                    maxlength: 255,
                 },
             },
             invalidHandler: function(event, validator) {
