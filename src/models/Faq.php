@@ -2,13 +2,15 @@
 
 namespace Abs\FaqPkg;
 
+use Abs\CompanyPkg\Traits\CompanyableTrait;
 use Abs\HelperPkg\Traits\SeederTrait;
 use App\Company;
 use App\Config;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Faq extends Model {
+class Faq extends BaseModel {
+	use CompanyableTrait;
 	use SeederTrait;
 	use SoftDeletes;
 	protected $table = 'faqs';
